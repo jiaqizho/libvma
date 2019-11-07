@@ -2191,6 +2191,9 @@ int epoll_ctl(int __epfd, int __op, int __fd, struct epoll_event *__event)
 	else {
 		srdr_logfunc_entry("epfd=%d, op=%s, fd=%d, event=NULL", __epfd, op_names[__op], __fd);
 	}
+	if (g_p_fd_collection == NULL){
+		return orig_os_api.epoll_ctl(__epfd,__op,__fd,__event);
+	}	
 
 	int rc = -1;
 	epfd_info *epfd_info = fd_collection_get_epfd(__epfd);
@@ -2247,6 +2250,9 @@ extern "C"
 int epoll_wait(int __epfd, struct epoll_event *__events, int __maxevents, int __timeout)
 {
 	srdr_logfunc_entry("epfd=%d, maxevents=%d, timeout=(%d milli-sec)", __epfd, __maxevents, __timeout);
+	if (g_p_fd_collection == NULL){
+		return orig_os_api.epoll_wait(__epfd,__events,__maxevents,__timeout);
+	}
 
 	return epoll_wait_helper(__epfd, __events, __maxevents, __timeout);
 }
