@@ -21,4 +21,5 @@ Have a question? please open a [github issue](https://github.com/Mellanox/libvma
 
 ### SPDK Information
 * Refer to the [spdk](https://github.com/spdk/spdk)
-* Why we need spec version of VMA? Bacuase we all know spdk base on dpdk, and dpdk have rte have some conflict with VMA , so i custom this spec version for spdk use.
+* Why we need spec version of VMA? Bacuase we all know spdk base on dpdk, and dpdk have rte have some conflict with VMA , so i custom this spec version for spdk to use.
+* only for test VMA tcp now.
